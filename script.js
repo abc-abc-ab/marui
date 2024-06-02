@@ -4,5 +4,7 @@ let elm = (x) = {
     document.querySelectorAll(x)
 }
 window.onload = () = {
-  elm("#output").textContent += "Output!!";
+  elm("#bOne").addEventListener("click",{
+    elm("#output").textContent += "Output!!";
+  }
 }
