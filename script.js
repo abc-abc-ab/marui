@@ -2,7 +2,7 @@ let i = 1;
 
 window.onload = () => {
   elm("#bOne").addEventListener("click", () => {
-    elm("#output").textContent += "output";
+    elm("#output").textContent += "output\n";
     i++;
   })
 }
