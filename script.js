@@ -1,4 +1,4 @@
-let i = 1;
+let i = localStorage.getItem("int") || 1;
 
 window.onload = () => {
   elm("#output").innerHTML = localStorage.getItem("output");
@@ -6,6 +6,7 @@ window.onload = () => {
     elm("#output").innerHTML += `Output ${i}<br>`;
     i++;
     localStorage.setItem("output", elm("#output").innerHTML)
+    localStorage.setItem("int", i)
   })
 }
 
