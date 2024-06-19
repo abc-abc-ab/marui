@@ -17,3 +17,38 @@ function elm(x){
     document.querySelector(x):
     document.querySelectorAll(x)
 }
+
+let Log = (() => {
+  function Log (level, text) {
+    this.level = new String(level);
+    this.text = new String(text);
+    let _prv = "";
+    Object.defineProperty(Log.prototype, "execute", {
+      value: () => {
+        if (this.level === ("log" || "info" || "warn" || "error")){
+         eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
+        }
+        else{
+         new TypeError(`TypeError: ${this.level} is Not a level.`)
+        }
+      }
+    })
+    Object.defineProperty(Log.prototype, "style", {
+      value: (style) => {
+        if (style){
+          this.text = "%s" + this.text
+          _prv = style;
+        }
+        else{
+          this.text = this.text.replace(/^%s/, "");
+          _prv = "";
+        }
+      }
+    })
+  }
+
+  return Log;
+})()
+
+let lg = new Log("erro", "This is a Error.");
+lg.execute();
