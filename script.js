@@ -28,11 +28,11 @@ let Log = (() => {
     this.text = new String(text);
     let _prv = "";
    this.execute = () => {
-        if (this.level == ("log" || "info" || "warn" || "error")){
+        if (this.level == ("log" || "info" || "warn" || "error" || "debug")){
          eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
         }
         else{
-         throw TypeError(`${this.level} is Not a level.`)
+         throw TypeError(`${this.level} is Not a level.`);
         }
       }
     this.style = (style) => {
@@ -51,19 +51,61 @@ let Log = (() => {
   return Log;
 })()
 
-let Css = (() => {
-  function Css(t, s){
-    if(t instanceof HTMLElement) {
+let ElementControl = (() => {
+  function ElementControl(t){
+    if (t instanceof HTMLElement){
       this.target = t;
-      this.style = new Array(s)
-    }
-    else{
-      throw TypeError("t is not HTMLElement")
     }
   }
 
-  return Css;
+  return ElementControl;
 })()
+
+let AddText  = (() => {
+  function AddText(t, s, o){
+    ElementControl.call(this, t)
+
+    this.sentence = new String(s);
+    if (o instanceof TextOption){
+      this.option = o;
+    }
+    this.execute = () => {
+        if (this.option.format == "HTML"){
+          this.target.insertAdjacentHTML("beforeend", this.sentence)
+        }
+        else if(this.option.format == "Text"){
+          this.target.insertAdjacentHTML("beforeend", this.sentence.replace())
+        }
+      }
+    }
+  AddText.prototype = Object.create(ElementControl.prototype, {value: {constructor: AddText}})
+
+  return AddText;
+})
+
+let TextOption = (() => {
+  function TextOption(format){
+    if (format == ("HTML" || "Text"))
+      this.format = new String(format);
+  }
+
+  return TextOption;
+})()
+
+function convert10(x) {
+  let result = "";
+  let inputStrings = new String(x);
+
+  if (inputStrings == "") {
+      throw SyntaxError('x is null.');
+  }
+  let inputStringsLength = inputStrings.length;
+
+  for (let i = 0; i < inputStringsLength; i++) {
+      result = result + "&#" + inputStrings.charCodeAt(i) + ";";
+  }
+  return result;
+}
 
 let lg = new Log("log", "This is a info.");
 lg.style("font-size: 30px")
