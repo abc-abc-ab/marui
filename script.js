@@ -8,6 +8,12 @@ window.onload = () => {
     localStorage.setItem("output", elm("#output").innerHTML)
     localStorage.setItem("int", i)
   })
+  elm("#bTwo").addEventListener("click", () => {
+    elm("#output").innerHTML = ""
+    i = 1;
+    localStorage.setItem("output", "")
+    localStorage.setItem("int", 1)
+  })
 }
 
 /** 
