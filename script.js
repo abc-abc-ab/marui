@@ -37,11 +37,11 @@ let Log = (() => {
       }
     this.style = (style) => {
         if (typeof style == "string"){
-          this.text = "%s" + this.text
+          this.text = "%c" + this.text
           _prv = style;
         }
         else {
-          this.text = this.text.replace(/^%s/i, "");
+          this.text = this.text.replace(/^%c/i, "");
           _prv = "";
         }
         
