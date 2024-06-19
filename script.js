@@ -16,12 +16,13 @@ window.onload = () => {
   })
 }
 
-/** 
- * @param {string} x */
 function elm(x){
-  return x.includes("#")?
-    document.querySelector(x):
-    document.querySelectorAll(x)
+  if (x instanceof String){
+    return x.includes("#")?
+      document.querySelector(x):
+      document.querySelectorAll(x)
+  }
+
 }
 
 let Log = (() => {
@@ -34,7 +35,7 @@ let Log = (() => {
          eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
         }
         else{
-         new TypeError(`TypeError: ${this.level} is Not a level.`)
+         throw TypeError(`TypeError: ${this.level} is Not a level.`)
         }
       }
     this.style = (style) => {
@@ -42,7 +43,7 @@ let Log = (() => {
           this.text = "%s" + this.text
           _prv = style;
         }
-        else (!style){
+        else {
           this.text = this.text.replace(/^%s/i, "");
           _prv = "";
         }
@@ -51,6 +52,20 @@ let Log = (() => {
   }
 
   return Log;
+})()
+
+let Css = (() => {
+  function Css(t, s){
+    if(t instanceof HTMLElement) {
+      this.target = t;
+      this.style = s;
+    }
+    else{
+      throw TypeError("t is not HTMLElement")
+    }
+  }
+
+  return Css;
 })()
 
 let lg = new Log("log", "This is a info.");
