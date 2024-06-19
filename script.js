@@ -28,7 +28,7 @@ let Log = (() => {
     this.text = new String(text);
     let _prv = "";
    this.execute = () => {
-        if (this.level === ("log" || "info" || "warn" || "error")){
+        if (this.level == ("log" || "info" || "warn" || "error")){
          eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
         }
         else{
