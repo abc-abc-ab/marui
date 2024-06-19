@@ -32,7 +32,7 @@ let Log = (() => {
          eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
         }
         else{
-         throw TypeError(`TypeError: ${this.level} is Not a level.`)
+         throw TypeError(`${this.level} is Not a level.`)
         }
       }
     this.style = (style) => {
