@@ -17,15 +17,9 @@ window.onload = () => {
 }
 
 function elm(x){
-  if (x instanceof String){
     return x.includes("#")?
       document.querySelector(x):
       document.querySelectorAll(x)
-  }
-  else if (x instanceof Css){
-    eval(`x.target.style.${x.style[0]} = ${x.style[1]};`)
-  }
-
 }
 
 let Log = (() => {
