@@ -22,6 +22,9 @@ function elm(x){
       document.querySelector(x):
       document.querySelectorAll(x)
   }
+  else if (x instanceof Css){
+    eval(`x.target.style.${x.style[0]} = ${x.style[1]};`)
+  }
 
 }
 
@@ -58,7 +61,7 @@ let Css = (() => {
   function Css(t, s){
     if(t instanceof HTMLElement) {
       this.target = t;
-      this.style = s;
+      this.style = new Array(s)
     }
     else{
       throw TypeError("t is not HTMLElement")
