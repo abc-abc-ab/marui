@@ -42,11 +42,12 @@ let Log = (() => {
           this.text = "%s" + this.text
           _prv = style;
         }
-        else{
+        else (!style){
           this.text = this.text.replace(/^%s/i, "");
           _prv = "";
         }
-      }
+        
+    }
   }
 
   return Log;
