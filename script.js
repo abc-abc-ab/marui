@@ -1,4 +1,4 @@
-let i = localStorage.getItem("int") || 1;
+let i = localStorage.getItem("int") || 1 || "";
 
 window.onload = () => {
   elm("#output").innerHTML = localStorage.getItem("output") || "";
