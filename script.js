@@ -72,8 +72,9 @@ let ElementControl = (() => {
 
 let AddText  = (() => {
   function AddText(t, s, o){
-    ElementControl.call(this, t)
-
+    if (t instanceof HTMLElement){
+      this.target = t;
+    }
     this.sentence = new String(s);
     if (o instanceof TextOption){
       this.option = o;
@@ -87,7 +88,6 @@ let AddText  = (() => {
         }
       }
     }
-  AddText.prototype = Object.create(ElementControl.prototype, {value: {constructor: AddText}})
 
   return AddText;
 })
