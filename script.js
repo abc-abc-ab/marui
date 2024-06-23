@@ -37,13 +37,13 @@ let Log = (() => {
       }
     this.style = (style) => {
         if (typeof style == "string"){
-          if (this.text.includes("%c")){
+          if (!this.text.includes("%c")){
             this.text = "%c" + this.text
           }
           _prv = style;
         }
         else if (style instanceof Array){
-          if (this.text.includes("%c")){
+          if (!this.text.includes("%c")){
             this.text = "%c" + this.text
           }
           let styleJoin = style.join("; ");
