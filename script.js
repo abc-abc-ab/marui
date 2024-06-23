@@ -3,6 +3,7 @@ let i = localStorage.getItem("int") || 1;
 window.onload = () => {
   elm("#output").innerHTML = localStorage.getItem("output") || "";
   elm("#bOne").addEventListener("click", () => {
+    // Comment
     elm("#output").innerHTML += `Output ${i} <br>`;
     i++;
     localStorage.setItem("output", elm("#output").innerHTML)
@@ -24,7 +25,7 @@ function elm(x){
 
 let Log = (() => {
   function Log (level, text) {
-    if (level == ("log" || "info" || "warn" || "error" || "debug")){
+    if (level == ("log" | "info" | "warn" | "error" | "debug")){
       this.level = new String(level);
     }
     else{
