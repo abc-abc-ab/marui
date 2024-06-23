@@ -24,12 +24,11 @@ function elm(x){
 
 let Log = (() => {
   function Log (level, text) {
-    if (this.level == ("log" || "info" || "warn" || "error" || "debug")){
+    if (level == ("log" || "info" || "warn" || "error" || "debug")){
       this.level = new String(level);
-      throw TypeError(`${this.level} is Not a level.`);
     }
     else{
-
+      throw TypeError(`${level} is Not a level.`);
     }
     this.text = new String(text);
     let _prv = "";
