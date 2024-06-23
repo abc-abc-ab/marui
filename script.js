@@ -37,8 +37,17 @@ let Log = (() => {
       }
     this.style = (style) => {
         if (typeof style == "string"){
-          this.text = "%c" + this.text
+          if (this.text.includes("%c")){
+            this.text = "%c" + this.text
+          }
           _prv = style;
+        }
+        else if (style instanceof Array){
+          if (this.text.includes("%c")){
+            this.text = "%c" + this.text
+          }
+          let styleJoin = style.join("; ");
+          _prv = styleJoin;
         }
         else {
           this.text = this.text.replace(/^%c/i, "");
@@ -108,5 +117,5 @@ function convert10(x) {
 }
 
 let lg = new Log("log", "This is a info.");
-lg.style("font-size: 30px")
+lg.style(["font-size: 30px", "color: #10a0ff"])
 lg.execute();
