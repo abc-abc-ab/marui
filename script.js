@@ -24,16 +24,17 @@ function elm(x){
 
 let Log = (() => {
   function Log (level, text) {
-    this.level = new String(level);
+    if (this.level == ("log" || "info" || "warn" || "error" || "debug")){
+      this.level = new String(level);
+      throw TypeError(`${this.level} is Not a level.`);
+    }
+    else{
+
+    }
     this.text = new String(text);
     let _prv = "";
    this.execute = () => {
-        if (this.level == ("log" || "info" || "warn" || "error" || "debug")){
          eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
-        }
-        else{
-         throw TypeError(`${this.level} is Not a level.`);
-        }
       }
     this.style = (style) => {
         if (typeof style == "string"){
@@ -119,3 +120,7 @@ function convert10(x) {
 let lg = new Log("log", "This is a info.");
 lg.style(["font-size: 30px", "color: #10a0ff"])
 lg.execute();
+
+
+
+new Log("info", "Javascrciptエラーは、ありません。").execute()
