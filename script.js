@@ -46,8 +46,8 @@ let Log = (() => {
           if (!this.text.includes("%c")){
             this.text = "%c" + this.text
           }
-          let styleJoin = style.join("; ");
-          _prv = styleJoin;
+          let SJ = style.join("; ");
+          _prv = SJ;
         }
         else {
           this.text = this.text.replace(/^%c/i, "");
