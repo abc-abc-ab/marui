@@ -3,7 +3,7 @@ let i = localStorage.getItem("int") || 1;
 window.onload = () => {
   elm("#output").innerHTML = localStorage.getItem("output") || "";
   elm("#bOne").addEventListener("click", () => {
-    // Comment
+    // Comment Update
     elm("#output").innerHTML += `Output ${i} <br>`;
     i++;
     localStorage.setItem("output", elm("#output").innerHTML)
