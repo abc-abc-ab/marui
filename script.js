@@ -25,7 +25,7 @@ function elm(x){
 
 let Log = (() => {
   function Log (level, text) {
-    if (level == ("log" | "info" | "warn" | "error" | "debug")){
+    if (/log | info | warn | error | debug/.test( level )){
       this.level = new String(level);
     }
     else{
