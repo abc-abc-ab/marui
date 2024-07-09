@@ -12,7 +12,7 @@ class Rectangle implements Shape{
     }
 }
 
-class Circle extends Shape implements Shape{
+class Circle implements Shape{
     radius: number;
     constructor(r: number) {
         this.radius = r;
