@@ -1,4 +1,4 @@
-let s = new Re(23, 52)
+let s = new Rectangle(23, 52)
 
 class Rectangle implements Shape{
     width: number
