@@ -23,7 +23,7 @@ class Circle implements Shape{
 }
 
 let yeah: Formula = {
-    Beautiful: number = Math.E ^ (Math.sqrt(-1))
+    Beautiful: number = Math.E ^ (Math.sqrt(-1) * Math.PI)
 }
 
 interface Shape{
