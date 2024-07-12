@@ -26,15 +26,15 @@ function elm(x){
 let Log = (() => {
   function Log (level, text) {
     if (/log | info | warn | error | debug/.test( level )){
-      this.level = new String(level);
+      this.level = String(level);
     }
     else{
       throw TypeError(`${level} is Not a level.`);
     }
-    this.text = new String(text);
+    this.text = String(text);
     let _prv = "";
-   this.execute = () => {
-         eval(`console.${this.level}("${this.text.replace(/"/g, '\\"')}"${_prv?", ":""}"${_prv.replace(/"/g, '\\"')}")`);
+    Log.prototype.execute = () => {
+         console.[this.level](`${this.text}, ${_prv}`)
       }
     this.style = (style) => {
         if (typeof style == "string"){
