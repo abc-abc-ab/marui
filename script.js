@@ -34,7 +34,7 @@ let Log = (() => {
     this.text = String(text);
     let _prv = "";
     Log.prototype.execute = () => {
-         console[this.level](this.text, _prv)
+         console[this.level](this.text + `( ${this.level} )`, _prv)
       }
     this.style = (style) => {
         if (typeof style == "string"){
