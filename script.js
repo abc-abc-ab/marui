@@ -36,7 +36,7 @@ let Log = (() => {
     Log.prototype.execute = () => {
          console[this.level](this.text + `( ${this.level} )`, _prv)
       }
-    this.style = (style) => {
+    Log.prototype.style = (style) => {
         if (typeof style == "string"){
           if (!this.text.includes("%c")){
             this.text = "%c" + this.text
