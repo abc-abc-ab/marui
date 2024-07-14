@@ -31,7 +31,7 @@ let Log = (() => {
     else{
       throw TypeError(`${level} is Not a level.`);
     }
-    this.text = JSON.stringify(text);
+    this.text = JSON.stringify(text).replace(/^"|"$/g, "");
     let _prv = "";
     Log.prototype.execute = () => {
          console[this.level](this.text + `( ${this.level} )`, _prv)
