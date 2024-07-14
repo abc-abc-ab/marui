@@ -31,7 +31,7 @@ let Log = (() => {
     else{
       throw TypeError(`${level} is Not a level.`);
     }
-    this.text = String(text);
+    this.text = JSON.stringify(text);
     let _prv = "";
     Log.prototype.execute = () => {
          console[this.level](this.text + `( ${this.level} )`, _prv)
@@ -104,7 +104,7 @@ let TextOption = (() => {
 
 function convert10(x) {
   let result = "";
-  let inputStrings = new String(x);
+  let inputStrings = String(x);
 
   if (inputStrings == "") {
       throw SyntaxError('x is null.');
